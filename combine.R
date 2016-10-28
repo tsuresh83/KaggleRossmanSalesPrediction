@@ -1,0 +1,5 @@
+baseline <- read.csv("/Users/sthiagar/Kaggle/rossman/result/XgBoostBaseline_2015-10-2414_34_50 .csv")
+withStoreFeatures <- read.csv("/Users/sthiagar/Kaggle/rossman/result/XgBoostPerStoreWithSalesFeatures1_suresh-le_2015-11-0216_23_42 .csv")
+m <- merge(baseline,withStoreFeatures,by="Id")
+m$Sales <- rowMeans(m[,c(2,3)])
+write.csv(m[,c(1,4)],file="/Users/sthiagar/Kaggle/rossman/result/XgBoostMeanBaselineAndWithStoreFeaturesForABD.csv",row.names = F)
